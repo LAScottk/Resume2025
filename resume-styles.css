@@ -86,6 +86,40 @@ html {
     font-weight: 700;
 }
 
+/* Hamburger Menu Button */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    flex-direction: column;
+    gap: 4px;
+    transition: var(--transition);
+}
+
+.hamburger-line {
+    width: 24px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    transition: var(--transition);
+    transform-origin: center;
+}
+
+/* Hamburger Animation */
+.nav-toggle.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.nav-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
 .nav-links {
     display: flex;
     gap: 2rem;
@@ -954,14 +988,64 @@ html {
 }
 
 @media (max-width: 768px) {
+    /* Mobile Navigation */
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(30, 60, 114, 0.98);
+        backdrop-filter: blur(15px);
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-lg);
+    }
+    
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .nav-link {
+        padding: 1rem 2rem;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+    
+    .nav-link:hover::after {
+        width: 0;
+    }
+    
+    /* Main Content Mobile */
     .main-content {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+        padding: 1rem;
     }
     
     .left-rail {
         position: static;
         top: auto;
+        margin-bottom: 2rem;
+    }
+    
+    .right-content {
+        padding: 0;
     }
     
     body {
@@ -972,16 +1056,13 @@ html {
         padding: 0.75rem 1rem;
     }
     
-    .nav-links {
-        gap: 1rem;
-    }
-    
     .container {
         padding: 1rem;
+        margin: 1rem;
     }
     
     .header {
-        padding: 2rem 0;
+        padding: 2rem 1rem;
         margin-bottom: 2rem;
     }
     
@@ -1005,6 +1086,21 @@ html {
     
     .highlights-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .specialties-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .tech-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .project-grid {
+        gap: 1rem;
     }
     
     .contact-info-left {
@@ -1013,6 +1109,30 @@ html {
     
     .contact-item-left {
         padding: 0.75rem;
+    }
+    
+    .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    
+    .project-title {
+        font-size: 1rem;
+    }
+    
+    .company-header {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "company-info"
+            "collapse-btn";
+        gap: 1rem;
+    }
+    
+    .role-dates {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
     }
 }
 
@@ -1027,22 +1147,254 @@ html {
         align-items: center;
     }
     
+    .container {
+        margin: 0.5rem;
+        padding: 0.5rem;
+    }
+    
+    .header {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .name {
+        font-size: 2rem;
+    }
+    
+    .title {
+        font-size: 1.1rem;
+    }
+    
+    .section {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .experience-item {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
     .company-header {
         grid-template-columns: 1fr;
         grid-template-areas: 
             "company-info"
-            "dates"
             "collapse-btn";
-        gap: 1rem;
+        gap: 0.75rem;
+        padding: 0.75rem;
+    }
+    
+    .company-name {
+        font-size: 1.25rem;
+    }
+    
+    .role-title {
+        font-size: 1.1rem;
+    }
+    
+    .project-title {
+        font-size: 0.95rem;
+    }
+    
+    .highlights-grid {
+        gap: 0.75rem;
+    }
+    
+    .highlight-card {
         padding: 1rem;
     }
     
-    .dates {
-        justify-self: center;
+    .highlight-number {
+        font-size: 1.5rem;
     }
     
-    .job-collapse-btn {
-        justify-self: center;
+    .specialties-grid {
+        gap: 0.75rem;
+    }
+    
+    .specialty-item {
+        padding: 0.75rem;
+    }
+}
+
+/* Portrait Mobile Devices - Optimized for narrow screens */
+@media (max-width: 480px) and (orientation: portrait) {
+    .container {
+        margin: 0.25rem;
+        padding: 0.25rem;
+    }
+    
+    .left-rail {
+        margin-bottom: 1.5rem;
+    }
+    
+    .section {
+        padding: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    /* Highlights Section - Portrait Mobile */
+    .highlights-container {
+        margin-bottom: 1.5rem;
+    }
+    
+    .highlights-grid {
+        gap: 0.5rem;
+        grid-template-rows: auto auto auto auto;
+    }
+    
+    .highlight-card {
+        padding: 0.75rem;
+        min-height: auto;
+    }
+    
+    .highlight-number {
+        font-size: 1.25rem;
+        line-height: 1.2;
+    }
+    
+    .highlight-label {
+        font-size: 0.85rem;
+        line-height: 1.2;
+    }
+    
+    /* Specialties Section - Portrait Mobile */
+    .specialties-grid {
+        gap: 0.5rem;
+    }
+    
+    .specialty-item {
+        padding: 0.5rem;
+        gap: 0.75rem;
+    }
+    
+    .specialty-icon {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+    }
+    
+    .specialty-text {
+        font-size: 0.9rem;
+        line-height: 1.3;
+    }
+    
+    /* Contact Section - Portrait Mobile */
+    .contact-info-left {
+        gap: 0.5rem;
+    }
+    
+    .contact-item-left {
+        padding: 0.5rem;
+    }
+    
+    .contact-icon {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .contact-text {
+        font-size: 0.85rem;
+    }
+    
+    /* Header - Portrait Mobile */
+    .header {
+        padding: 1.25rem 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .name {
+        font-size: 1.75rem;
+        line-height: 1.2;
+    }
+    
+    .title {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+    
+    /* Experience Section - Portrait Mobile */
+    .experience-item {
+        padding: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .company-header {
+        padding: 0.5rem;
+        gap: 0.5rem;
+    }
+    
+    .company-name {
+        font-size: 1.1rem;
+    }
+    
+    .role-title {
+        font-size: 1rem;
+    }
+    
+    .project-title {
+        font-size: 0.9rem;
+    }
+}
+
+/* Landscape Mobile Devices - Optimized for wider mobile screens */
+@media (max-width: 480px) and (orientation: landscape) {
+    .container {
+        margin: 0.5rem;
+        padding: 0.5rem;
+    }
+    
+    .section {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* Highlights Section - Landscape Mobile */
+    .highlights-grid {
+        gap: 0.75rem;
+    }
+    
+    .highlight-card {
+        padding: 1rem;
+    }
+    
+    .highlight-number {
+        font-size: 1.4rem;
+    }
+    
+    .highlight-label {
+        font-size: 0.9rem;
+    }
+    
+    /* Specialties Section - Landscape Mobile */
+    .specialties-grid {
+        gap: 0.75rem;
+    }
+    
+    .specialty-item {
+        padding: 0.75rem;
+    }
+    
+    .specialty-icon {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .specialty-text {
+        font-size: 0.95rem;
+    }
+    
+    /* Header - Landscape Mobile */
+    .header {
+        padding: 1.5rem 0.75rem;
+        margin-bottom: 1.75rem;
+    }
+    
+    .name {
+        font-size: 1.9rem;
+    }
+    
+    .title {
+        font-size: 1.05rem;
     }
 }
 

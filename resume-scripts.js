@@ -1,5 +1,34 @@
 // Resume Scripts for Scott M. Kanas
 
+// Mobile Navigation functionality
+function initializeMobileNavigation() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', function() {
+            navToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        navLinks.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                navToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                navToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    }
+}
+
 // Project expand/collapse functionality - DRY implementation
 function initializeProjectToggles() {
     // Remove all existing onclick attributes
@@ -73,6 +102,9 @@ function toggleJob(button) {
 
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize mobile navigation
+    initializeMobileNavigation();
+    
     // Initialize project toggles
     initializeProjectToggles();
     
