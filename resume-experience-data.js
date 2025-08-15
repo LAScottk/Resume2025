@@ -4,7 +4,7 @@ const experienceData = [
         company: "Accenture Song",
         role: "Song Account Leader",
         dates: "2022 – Present",
-        description: "Member of the Accenture account teams for a Fortune 5 client and a top 3 Telecommunications firm. P&L responsibilities for marketing technology programs within the client's consumer-facing storefronts, including a staff of 50 and annual revenue > $20M. Directly responsible for ecosystem software vendor alliances in support of my clients.",
+        description: "Member of the Accenture account teams for a Fortune 5 client and a top 3 Telecommunications firm. P&L responsibilities for marketing technology programs within the client's consumer-facing storefronts, including a staff of 50 and annual revenue > $18M. Directly responsible for ecosystem software vendor alliances in support of my clients.",
         projects: [
             {
                 title: "<i data-lucide='bar-chart-3'></i> Marketing Publishing Transformation",
@@ -14,10 +14,7 @@ const experienceData = [
                 title: "<i data-lucide='brain'></i> Consolidated Knowledge Base for 70,000 Employees",
                 description: "Converted $300K investment into a multi-year sale of $5M+. Led audit of another vendor's challenged implementation identifying material quality gaps and root causes. Designed and conducted 10 AI capability demos and crafted a new team to take over maintenance and development from the legacy vendor."
             },
-            {
-                title: "<i data-lucide='test-tube'></i> A/B Testing Program",
-                description: "Completely turned around troubled program. Developed client relationship to highest possible CSAT rating and a 3-year renewal with +3% margin. Deployed new cycle time monitoring and process automations that improved SLA results by 70%."
-            },
+            
             {
                 title: "<i data-lucide='star'></i> Product Management Services",
                 description: "Won competitive bid for product management services for 3+ years and > $10M. Developed new workflow tools and operating processes that automated 80% of executive reporting."
@@ -41,7 +38,11 @@ const experienceData = [
             {
                 title: "<i data-lucide='building'></i> Investment Firm Portal Transformation",
                 description: "Led solution strategy and planning phase for $50M+ transformation of consumer-facing portal for investments impacting ~$2T+ assets under management."
-            }
+            },
+            {
+                title: "<i data-lucide='test-tube'></i> A/B Testing Program",
+                description: "Completely turned around troubled program. Developed client relationship to highest possible CSAT rating and a 3-year renewal with +3% margin. Deployed new cycle time monitoring and process automations that improved SLA results by 70%."
+            },
         ]
     },
     {
